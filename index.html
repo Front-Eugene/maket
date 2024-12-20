@@ -42,7 +42,9 @@
                         -50%
                     </p>
                 </div>
-                <button class="order">Оформить заказ</button>
+                <a href="#order_form">
+                    <button class="order">Оформить заказ</button>
+                </a>
             </div>
             <img src="src/img/main_1.png" alt="">
         </section>
@@ -195,11 +197,11 @@
         
         <section class="form">
             <img src="src/img/main_2.png" alt="">
-            <form action="">
+            <form id="order_form" action="send.php" method="post" onsubmit="return checkForm(this);">
                 <h2>Свяжитесь с нами</h2>
                 <input class="form__input" name="name" id="name" type="text" placeholder="Имя" required="" minlength="2">
                 <input class="form__input tel" name="phone" id="phone" type="tel" placeholder="Телефон" required="">
-                <button class="order">Отправить заявку</button>
+                <button class="order button">Отправить заявку</button>
             </form>
         </section>
     </main>
@@ -240,29 +242,70 @@
 
         <div class="footer-item">
             <p>
-                <a href="">
+                <a href="documents/politics.html">
                     <span>Политика конфиденциальности</span>
                 </a>
             </p>
 
             <p>
-                <a href="">
+                <a href="documents/agreement.html">
                     <span>Пользовательское соглашение</span>
                 </a>
             </p>
 
             <p>
-                <a href="">
+                <a href="documents/dogovor_vozvrata.html">
                     <span>Договор возврата товара и денежных средств</span>
                 </a>
             </p>
 
             <p>
-                <a href="">
+                <a href="documents/dostavka.html">
                     <span>Договор доставки</span>
                 </a>
             </p>
         </div>
     </footer>
+
+    <script>
+        // МАСКА ТЕЛЕФОНА
+        [].forEach.call(document.querySelectorAll('.tel'), function (input) {
+            var keyCode;
+            function mask(event) {
+                event.keyCode && (keyCode = event.keyCode);
+                var pos = this.selectionStart;
+                if (pos < 3) event.preventDefault();
+                var matrix = "+375 (__) ___ - __ - __",
+                    i = 0,
+                    def = matrix.replace(/\D/g, ""),
+                    val = this.value.replace(/\D/g, ""),
+                    new_value = matrix.replace(/[_\d]/g, function (a) {
+                        return i < val.length ? val.charAt(i++) : a
+                    });
+                i = new_value.indexOf("_");
+                if (i != -1) {
+                    i < 5 && (i = 3);
+                    new_value = new_value.slice(0, i)
+                }
+                var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+                    function (a) {
+                        return "\\d{1," + a.length + "}"
+                    }).replace(/[+()]/g, "\\$&");
+                reg = new RegExp("^" + reg + "$");
+                if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+                    this.value = new_value;
+                }
+                if (event.type == "blur" && this.value.length < 5) {
+                    this.value = "";
+                }
+            }
+
+            input.addEventListener("input", mask, false);
+            input.addEventListener("focus", mask, false);
+            input.addEventListener("blur", mask, false);
+            input.addEventListener("keydown", mask, false);
+
+        });
+    </script>
 </body>
 </html>
