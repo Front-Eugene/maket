@@ -24,7 +24,7 @@ header {
     width: 100%;
     padding: 20px 0;
     display: flex;
-    font-size: 35px;
+    font-size: 20px;
     font-weight: 900;
     justify-content: space-between;
     color: #fff;
@@ -36,23 +36,28 @@ header {
 
 .screen {
     width: 100%;
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     color: #fff;
 }
 
+.screen img {
+    height: 500px;
+    /* height: 50%; */
+}
+
 .screen-wrap {
     width: 545px;
-    margin-top: 100px;
 }
 
 .screen-wrap h1 {
-    font-size: 64px;
+    font-size: 45px;
 }
 
 .screen-text {
     margin-top: 50px;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 .price-wrap {
@@ -209,6 +214,10 @@ header {
     justify-content: space-between;
 }
 
+.form img {
+    width: 50%;
+}
+
 .form__input {
     width: 100%;
     margin-top: 20px;
@@ -272,6 +281,10 @@ footer a {
 }
 
 @media screen and (min-width: 100px) and (max-width: 1400px) {
+    header {
+        font-size: 12px;
+    }
+
     .hide {
         display: none;
     }
@@ -281,7 +294,13 @@ footer a {
     }
 
     .screen {
+        margin-top: 20px;
         flex-direction: column-reverse;
+    }
+
+    .screen img {
+        height: auto;
+        width: 100%;
     }
 
     .screen-wrap {
@@ -289,12 +308,13 @@ footer a {
     }
 
     .screen-wrap h1 {
+        margin-top: 30px;
         font-size: 24px;
     }
 
     .screen-text {
         margin-top: 20px;
-        font-size: 12px;
+        font-size: 20px;
     }
 
     .price-wrap {
@@ -302,15 +322,19 @@ footer a {
     }
 
     .price-old {
-        font-size: 12px;
+        font-size: 20px;
     }
 
     .price-new {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .sale {
         font-size: 16px;
+    }
+
+    .perks {
+        margin-top: 50px;
     }
 
     .perks h2 {
@@ -327,6 +351,10 @@ footer a {
 
     .perks-item {
         margin-top: 20px;
+    }
+
+    .review {
+        margin-top: 50px;
     }
 
     .review h2 {
